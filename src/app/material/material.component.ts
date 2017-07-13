@@ -12,7 +12,7 @@ import { Logger } from "angular2-logger/core";
 export class MaterialComponent {
     title = "Material";
     constructor(private _logger: Logger){
-        this._logger.debug("create MaterialComponent");
+        this._logger.log("create MaterialComponent");
         
     }
 }

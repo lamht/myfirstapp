@@ -33,7 +33,7 @@ export class FullLayoutComponent implements OnInit {
   }
 
   constructor(private router: Router, private _logger: Logger) {
-      this._logger.debug("Init full layout");
+      this._logger.log("Init full layout");
       router.events.subscribe((event: RouterEvent) => {
             this.navigationInterceptor(event);
       });

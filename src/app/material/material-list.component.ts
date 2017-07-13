@@ -44,6 +44,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
     notificate(){
         this._notify.add(new Notification(globalMessage.MessageType.Success, globalMessage.Messages.Success));
+        this._notify.add(new Notification(globalMessage.MessageType.Error, globalMessage.Messages.Fail));
+        this._notify.add(new Notification(globalMessage.MessageType.Info, globalMessage.Messages.Success));
+        this._notify.add(new Notification(globalMessage.MessageType.Warning, globalMessage.Messages.Success));
     }
 
     bindGrid() { //// Bind material Grid

@@ -76,6 +76,6 @@ export const routes: Routes = [
 })
 export class AppRoutingModule {
   constructor(private _logger: Logger){
-    this._logger.debug("craete AppRoutingModule");
+    this._logger.log("craete AppRoutingModule");
   }
 }

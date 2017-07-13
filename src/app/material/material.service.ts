@@ -23,7 +23,7 @@ export class MaterialService {
     private itemService: ItemsService;
    
    constructor(private itemS: ItemsService, private _logger: Logger) {
-       this._logger.debug("create MaterialService");
+       this._logger.log("create MaterialService");
        this.materials = new Array<Material>();
        this.itemService = itemS;
    }

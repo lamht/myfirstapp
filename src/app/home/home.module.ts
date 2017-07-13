@@ -22,6 +22,6 @@ import { Logger } from "angular2-logger/core";
 
 export class HomeModule {
     constructor(private _logger: Logger){
-        this._logger.debug("create HomeModule");
+        this._logger.log("create HomeModule");
     }
 }

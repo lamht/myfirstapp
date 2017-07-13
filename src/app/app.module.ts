@@ -30,7 +30,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
- import { Logger } from "angular2-logger/core"; 
+ import { Logger, Level} from "angular2-logger/core"; 
+ import {LOG_LOGGER_PROVIDERS} from "angular2-logger/core";
 
 // Must export the config
 export const firebaseConfig = {
@@ -67,19 +68,19 @@ export const firebaseConfig = {
   ],
   providers: [{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy,    
+    useClass: HashLocationStrategy,  
   }, 
     Http,
     ItemsService,
     NotificationService ,
     BasicValidators,
-    Logger 
+    LOG_LOGGER_PROVIDERS 
   ],
   bootstrap: [ AppComponent, NotificationsComponents ]
 })
 export class AppModule { 
   constructor(private _logger: Logger){
-    this._logger.level = this._logger.Level.LOG;
-    this._logger.debug("create AppModule");
+    
+    this._logger.log("create AppModule");
   }
 }

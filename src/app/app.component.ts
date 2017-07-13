@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor(private _logger: Logger){
-    this._logger.debug("create AppComponent. Init my app");
+    this._logger.log("create AppComponent. Init my app");
   }
 }

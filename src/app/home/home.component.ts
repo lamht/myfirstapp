@@ -9,7 +9,7 @@ import { Logger } from "angular2-logger/core";
 export class HomeComponent implements OnInit {
 
   constructor(private _logger: Logger) { 
-    this._logger.debug("create HomeComponent");
+    this._logger.log("create HomeComponent");
   }
 
   ngOnInit() {

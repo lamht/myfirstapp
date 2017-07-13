@@ -11,11 +11,11 @@ export class Notifiy {
 @Injectable()
 export class ShareDataService {
     constructor(private _logger: Logger){
-        this._logger.debug("create ShareDataService");
+        this._logger.log("create ShareDataService");
     }
-    notify: Notifiy
-    dataPassed = new Notifiy();
-    SetData(type, msg) {
+    public dataPassed : Notifiy = null;
+
+    public SetData(type, msg) {
         var newMessage = new Notifiy();
 
         newMessage.type = type;

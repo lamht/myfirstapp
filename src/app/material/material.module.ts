@@ -40,6 +40,6 @@ import { Logger } from "angular2-logger/core";
 
 export class MaterialModule {
     constructor(private _logger: Logger){
-        this._logger.debug("create MaterialModule");
+        this._logger.log("create MaterialModule");
     }
 }

@@ -8,7 +8,7 @@ import { Logger } from "angular2-logger/core";
 export class SimpleLayoutComponent implements OnInit {
 
   constructor(private _logger: Logger) { 
-    this._logger.debug("create SimpleLayoutComponent");
+    this._logger.log("create SimpleLayoutComponent");
   }
 
   ngOnInit(): void { }
