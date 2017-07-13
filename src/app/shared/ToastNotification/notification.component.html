@@ -3,8 +3,8 @@
     <div *ngFor="let note of _notes">
             
             <div class="toast toasty-type-{{ note.type }} toasty-theme-default">
-            <div class="close-button"></div>
-            <div class="toast-text">
+            <div class="close-button"(click)="hide(note)"><span aria-hidden="true">×</span></div>            
+            <div class="toast-text">                
                 <span class="toast-title">Toast It!</span>
                 <br>
                 <span class="toast-msg">{{ note.message }}</span>

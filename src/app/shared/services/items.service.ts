@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 export class ItemsService {
  
     constructor(private _logger: Logger) { 
-        this._logger.debug("create ItemsService");
+        this._logger.log("create ItemsService");
     }
  
     /*

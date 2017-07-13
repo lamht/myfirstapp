@@ -7,7 +7,7 @@ import { Logger } from "angular2-logger/core";
 export class RealTimeService {
    public realTimeVal : FirebaseObjectObservable<RealTimeData>;
    constructor(db: AngularFireDatabase, afAuth: AngularFireAuth, private _logger: Logger) {
-       this._logger.debug("create RealTimeService");
+       this._logger.log("create RealTimeService");
        this.realTimeVal = db.object('realtime');
        afAuth.authState;
        //this.update(10);

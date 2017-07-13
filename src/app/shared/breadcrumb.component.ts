@@ -16,7 +16,7 @@ import { Logger } from "angular2-logger/core";
 export class BreadcrumbsComponent {
   breadcrumbs: Array<Object>;
   constructor(private router: Router, private route: ActivatedRoute, private _logger: Logger) {
-    this._logger.debug("create BreadcrumbsComponent");
+    this._logger.log("create BreadcrumbsComponent");
   }
   ngOnInit(): void {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {

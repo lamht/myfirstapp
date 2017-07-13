@@ -8,7 +8,7 @@ import { Logger } from "angular2-logger/core";
 export class NotificationService {
     private _Notifications = new Subject<Notification>();
     constructor(private _logger: Logger){   
-        this._logger.debug("create NotificationService");
+        this._logger.log("create NotificationService");
     }
 
     public noteAdded = this._Notifications.asObservable();

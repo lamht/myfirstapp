@@ -24,6 +24,6 @@ import { Logger } from "angular2-logger/core";
 
 export class RealTimeModule {
     constructor(private _logger: Logger){
-        this._logger.debug("create RealTimeModule");
+        this._logger.log("create RealTimeModule");
     }
 }

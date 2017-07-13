@@ -1,7 +1,9 @@
 'use strict';
 export var MessageType = {
     Success: 'success',
-    Fail: 'danger'
+    Error: 'error',
+    Info: 'info',
+    Warning: 'warning'
 }
 //   export var webUrl="http://localhost/InventoryManagement/";
 

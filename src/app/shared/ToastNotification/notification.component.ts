@@ -16,13 +16,13 @@ export class NotificationsComponents {
     private _notes: Notification[];
 
     constructor(private _notifications: NotificationService, private router: Router, private _logger: Logger) {
-        this._logger.debug("create NotificationsComponents");
+        this._logger.log("create NotificationsComponents");
         this._notes = new Array<Notification>();
 
         _notifications.noteAdded.subscribe(note => {
             this._notes.push(note);
 
-            setTimeout(() => { this.hide.bind(this)(note) }, 6000);
+            setTimeout(() => { this.hide.bind(this)(note) }, 7000);
         });
 
         router.events.subscribe((val) => {
@@ -30,7 +30,7 @@ export class NotificationsComponents {
                     //console.log("NavigationStart");
                 } else if(val instanceof NavigationEnd){
                     //console.log("NavigationEnd");
-                    //this.clearAll();
+                    this.clearAll();
                 }
         });
     }
