@@ -1,0 +1,77 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="card col-sm-12">
+            <div class="card-block">
+
+                <h2 class="card-title mb-0"> Materials </h2>
+
+                <div class="mt-1 mb-1 ">
+                    <a [routerLink]="['AddMaterial']" class="btn btn-primary"> Add</a>
+                    &nbsp; 
+                    <button type="button" class="btn btn-danger" (click)="notificate()">Notification</button>
+                </div>
+
+                <!--issue : Not variables properly used as per standard like i should put Yes/No buttons
+                in modalpopup component and that component should return me yes/no as output-->
+
+               
+
+                <table class="table table-bordered table-striped table-condensed  ">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Desciption</th>
+                            <th class="text-center">Edit</th>
+                            <th class="text-center">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let material of materials">
+                            <td>{{material.Name}}</td>
+                            <td>{{material.Code}}</td>
+                            <td>{{material.Description}}</td>
+                            <td class="text-center">
+                                <a [routerLink]="['EditMaterial', {id:material.MaterialId}]">
+
+                                    <i class="fa fa-pencil-square-o  fa-2x"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <!--<i (click)="deleteMaterial(material)" class="glyphicon glyphicon-remove"></i>-->
+                                <!--assign material to object used for delete and "showDialog" to true which emits visible of Modal popup-->
+                                <i data-toggle="modal" (click)="infoModal.show(); objDeleteMaterial=material" class="red fa fa-trash-o fa-2x" style="cursor:pointer"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <!-- end card block-->
+        </div>
+    </div>
+</div>
+
+<div bsModal #infoModal="bs-modal" class="modal " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Comfirm delete</h4>
+                <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="infoModal.hide(); confirmDelete()" >Yes</button>
+                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()">No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

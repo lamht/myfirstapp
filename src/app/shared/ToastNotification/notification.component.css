@@ -1,0 +1,77 @@
+#toasty.toasty-position-bottom-right {
+    bottom: 12px;
+    right: 12px;
+}
+#toasty {
+    position: fixed;
+    z-index: 999999;
+}
+#toasty .toast.toasty-theme-default {
+    font-family: Tahoma, Geneva, sans-serif !important;
+    font-size: 12px;
+    border-radius: 0px;
+}
+#toasty .toast {
+    cursor: pointer;
+    margin: 0 0 6px;
+    padding: 0;
+    width: 285px;
+    height: 65px;
+    display: table;
+    background-size: 24px 24px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    opacity: 0.9;
+    position: relative;
+}
+
+#toasty .toast .close-button {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+#toasty .toast.toasty-theme-default .toast-text {
+    color: #ffffff;
+}
+
+#toasty .toast .toast-text {
+    padding: 5px 20px 5px 60px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#toasty .toast .toast-text .toast-title {
+    font-weight: bold;
+}
+#toasty .toast.toasty-theme-default .toast-text .toast-title {
+    font-size: 13px;
+}
+
+
+#toasty .toast.toasty-theme-default.toasty-type-info {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFW…rmdHyp5rqovVRzXtReqqmI2ks170VKLtWkMh1kdfwTYADvtL/RevtcWAAAAABJRU5ErkJggg==) !important;
+    background-color: #3EBFA8;
+}
+	
+#toasty .toast.toasty-theme-default.toasty-type-error {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFW…rnQ5GdZtfOLnSQESzM6eLZHaYcd/h5TCJeaf6v9U+AAQAvyHBRYhRQ4wAAAABJRU5ErkJggg==) !important;
+    background-color: #F1432A;
+}
+	
+#toasty .toast.toasty-theme-default.toasty-type-warning {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFW…+F/DMAnYL/xsT4JJ966WeKCWZSdYzPO83/O2jeEUv6J8AAuUNANq3q2uMAAAAASUVORK5CYII=) !important;
+    background-color: #F97A1F;
+}
+
+#toasty .toast.toasty-theme-default.toasty-type-success {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFW…UkIuDwCMcrEqP8CIdRjakSbLd4qOYT+AN+rxxzKkUh/wQYAIxbfwhIUivlAAAAAElFTkSuQmCC) !important;
+    background-color: #06BC5A;
+}
