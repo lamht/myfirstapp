@@ -1,1 +1,105 @@
 // Here you can add other styles
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  margin: auto;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.table-fill th {
+  color:#fff;;
+  background:rgba(38, 50, 56, 0.92);
+  border-right: 1px solid #343a45;
+  text-align:left;
+  vertical-align:middle;
+  padding: 15px;
+}
+
+.table-fill th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+.table-fill th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+.table-fill tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  text-align:left;
+  vertical-align:middle;
+  font-size: $font-size-base;
+  line-height: 1.25;
+  color: #607d8b;
+  background-color: #fff;
+}
+ 
+.table-fill tr:hover td {
+  background:rgba(78, 80, 102, 0.8);
+  color:#FFFFFF;
+  border-top: 1px solid rgba(78, 80, 102, 0.8);
+  border-bottom: 1px solid rgba(78, 80, 102, 0.8);
+}
+ 
+.table-fill tr:first-child {
+  border-top:none;
+}
+
+.table-fill tr:last-child {
+  border-bottom:none;
+}
+ 
+.table-fill tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+.table-fill tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+.table-fill tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+.table-fill tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+.table-fill td {
+  padding: 10px;
+}
+
+.table-fill td:last-child {
+  border-right: 0px;
+}
+
+.table-fill th.text-left {
+  text-align: left;
+}
+
+.table-fill th.text-center {
+  text-align: center;
+}
+
+.table-fill th.text-right {
+  text-align: right;
+}
+
+.table-fill td.text-left {
+  text-align: left;
+}
+
+.table-fill td.text-center {
+  text-align: center;
+}
+
+.table-fill td.text-right {
+  text-align: right;
+}
