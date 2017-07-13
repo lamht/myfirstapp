@@ -31,7 +31,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
  import { Logger, Level} from "angular2-logger/core"; 
- import {LOG_LOGGER_PROVIDERS} from "angular2-logger/core";
 
 // Must export the config
 export const firebaseConfig = {
@@ -74,13 +73,13 @@ export const firebaseConfig = {
     ItemsService,
     NotificationService ,
     BasicValidators,
-    LOG_LOGGER_PROVIDERS 
+    Logger 
   ],
   bootstrap: [ AppComponent, NotificationsComponents ]
 })
 export class AppModule { 
   constructor(private _logger: Logger){
-    
+    this._logger.level = Level.LOG;
     this._logger.log("create AppModule");
   }
 }

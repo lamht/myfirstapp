@@ -99,11 +99,11 @@ export class MaterialFormComponent implements OnInit {
                     this.router.navigate(["materials"]);
                 }
                 else if (data == 2) {
-                    this._notify.add(new Notification(globalMessage.MessageType.Fail, globalMessage.Messages.Exists));
+                    this._notify.add(new Notification(globalMessage.MessageType.Error, globalMessage.Messages.Exists));
                     
                 }
                 else {
-                    this._sharedService.SetData(globalMessage.MessageType.Fail, globalMessage.Messages.Exists);
+                    this._sharedService.SetData(globalMessage.MessageType.Error, globalMessage.Messages.Exists);
                     
                 }
             }

@@ -25,12 +25,13 @@ app-root {
 
 .app-body {
   display: flex;
-  flex-grow:1;
   flex-direction: row;
+  flex-grow: 1;
   overflow-x: hidden;
 
   .main {
     flex: 1;
+    min-width: 0;
   }
 
   .sidebar {
@@ -52,7 +53,7 @@ app-root {
 .header-fixed {
   .app-header {
     position: fixed;
-    z-index: $zindex-navbar;
+    z-index: $zindex-sticky;
     width: 100%;
   }
   .app-body {
@@ -74,6 +75,7 @@ app-root {
 
   .sidebar {
     position: fixed;
+    width: $sidebar-width;
     height: 100%;
 
     .sidebar-nav {
@@ -96,7 +98,7 @@ app-root {
 .sidebar-off-canvas {
   .sidebar {
     position: fixed;
-    z-index: $zindex-navbar - 1;
+    z-index: $zindex-sticky - 1;
     height: 100%;
 
 
@@ -106,28 +108,65 @@ app-root {
   }
 }
 
-.sidebar-compact {
-  .sidebar {
-    flex: 0 0 $sidebar-compact-width;
-  }
-
-  &.sidebar-hidden {
-
+@include media-breakpoint-up(lg) {
+  .sidebar-compact {
     .sidebar {
-      margin-left: - $sidebar-compact-width;
-    }
-  }
-
-  &.sidebar-fixed {
-
-    .main, .app-footer {
-      margin-left: $sidebar-compact-width;
+      flex: 0 0 $sidebar-compact-width;
     }
 
     &.sidebar-hidden {
 
+      .sidebar {
+        margin-left: - $sidebar-compact-width;
+      }
+    }
+
+    &.sidebar-fixed {
+
       .main, .app-footer {
-        margin-left: 0;
+        margin-left: $sidebar-compact-width;
+      }
+
+      .sidebar {
+        width: $sidebar-compact-width;
+      }
+
+      &.sidebar-hidden {
+
+        .main, .app-footer {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .sidebar-minimized {
+    .sidebar {
+      flex: 0 0 $sidebar-minimized-width;
+    }
+
+    &.sidebar-hidden {
+
+      .sidebar {
+        margin-left: - $sidebar-minimized-width;
+      }
+    }
+
+    &.sidebar-fixed {
+
+      .main, .app-footer {
+        margin-left: $sidebar-minimized-width;
+      }
+
+      .sidebar {
+        width: $sidebar-minimized-width;
+      }
+
+      &.sidebar-hidden {
+
+        .main, .app-footer {
+          margin-left: 0;
+        }
       }
     }
   }
@@ -171,7 +210,7 @@ app-root {
   .aside-menu {
     position: fixed;
     right: 0;
-    z-index: $zindex-navbar - 1;
+    z-index: $zindex-sticky - 1;
     height: 100%;
 
     .tab-content {
@@ -188,7 +227,7 @@ app-root {
   .app-footer {
     position: fixed;
     bottom: 0;
-    z-index: $zindex-navbar;
+    z-index: $zindex-sticky;
     width: 100%;
   }
 
@@ -205,8 +244,7 @@ app-root {
 .sidebar,
 .main,
 .aside-menu {
-  transition-duration: $layout-transition-speed, $layout-transition-speed;
-  transition-property: margin-left, margin-right;
+  transition: margin-left $layout-transition-speed, margin-right $layout-transition-speed, width $layout-transition-speed, flex $layout-transition-speed;
 }
 
 //
@@ -217,7 +255,7 @@ app-root {
 
   .app-header {
     position: fixed !important;
-    z-index: $zindex-navbar;
+    z-index: $zindex-sticky;
     width: 100%;
 
     .navbar-toggler {
