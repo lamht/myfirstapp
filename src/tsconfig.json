@@ -9,7 +9,7 @@
       "dom"
     ],
     "mapRoot": "./",
-    "module": "es2016",
+    "module": "amd",
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc",
     "sourceMap": true,
