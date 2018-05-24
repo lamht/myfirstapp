@@ -1,5 +1,13 @@
 import {Component, OnInit, Input,
-    Output, OnChanges, EventEmitter, trigger, state, style, animate, transition} from '@angular/core'
+    Output, OnChanges, EventEmitter} from '@angular/core';
+import {
+        trigger,
+        state,
+        style,
+        animate,
+        transition
+      } from '@angular/animations';
+
 
 @Component({
     selector: 'modal-popup',

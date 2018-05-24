@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class AF {
-  public messages: FirebaseListObservable<any>;
-  public users: FirebaseListObservable<any>;
+  public messages: AngularFireList<any>;
+  public users: AngularFireList<any>;
   public displayName: string;
   public email: string;
   constructor(public db: AngularFireDatabase, public af: AngularFireAuth) {
