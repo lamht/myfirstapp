@@ -1,7 +1,6 @@
 import { ModalDirective } from 'ngx-bootstrap';
 import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {RouterLink, Router} from '@angular/router';
-//import {NgFor} from '@angular/common/common';
 
 
 import {MaterialService} from './material.service'

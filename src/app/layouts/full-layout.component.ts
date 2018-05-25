@@ -13,6 +13,7 @@ import { NGXLogger  } from 'ngx-logger';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './full-layout.component1.html'
+  //template: '<router-outlet></router-outlet>',
 })
 export class FullLayoutComponent implements OnInit {
 
