@@ -5,12 +5,12 @@ import { ItemsService }     from '../shared/services/items.service';
 import { NGXLogger  } from 'ngx-logger';
 
 import { map, catchError } from 'rxjs/operators';
-
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 
 import {Material} from './models/material.model'
 
 //import globalVariables = require('../shared/global/global.variables')
-
+//https://github.com/angular/angularfire2/blob/master/docs/rtdb/lists.md
 @Injectable()
 export class MaterialService {
 
@@ -19,11 +19,13 @@ export class MaterialService {
     private materials : Array<Material>;
     private curentIndex : number = 1;
     private itemService: ItemsService;
+    private materialFB: AngularFireList<any>;
    
-   constructor(private itemS: ItemsService, private _logger: NGXLogger) {
+   constructor(private itemS: ItemsService, private db: AngularFireDatabase, private _logger: NGXLogger) {
        this._logger.debug("create MaterialService");
        this.materials = new Array<Material>();
        this.itemService = itemS;
+       this.materialFB = db.list("material");
    }
    /*
     constructor(private _http: Http) {
