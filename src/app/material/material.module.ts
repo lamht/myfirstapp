@@ -15,7 +15,7 @@ import {MaterialService} from './material.service'
 import {ShareDataService} from './sharedata.service';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { Logger } from "angular2-logger/core";
+import { NGXLogger  } from 'ngx-logger';
 
 
 @NgModule({
@@ -39,7 +39,7 @@ import { Logger } from "angular2-logger/core";
     })
 
 export class MaterialModule {
-    constructor(private _logger: Logger){
-        this._logger.log("create MaterialModule");
+    constructor(private _logger: NGXLogger){
+        this._logger.debug("create MaterialModule");
     }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Component({
   selector: 'breadcrumbs',
@@ -15,8 +15,8 @@ import { Logger } from "angular2-logger/core";
 })
 export class BreadcrumbsComponent {
   breadcrumbs: Array<Object>;
-  constructor(private router: Router, private route: ActivatedRoute, private _logger: Logger) {
-    this._logger.log("create BreadcrumbsComponent");
+  constructor(private router: Router, private route: ActivatedRoute, private _logger: NGXLogger) {
+    this._logger.debug("create BreadcrumbsComponent");
   }
   ngOnInit(): void {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {

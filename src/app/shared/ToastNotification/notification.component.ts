@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {NotificationService} from './notification.service';
 import {Notification} from './notification';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Component({
     selector: 'notifications',
@@ -15,8 +15,8 @@ import { Logger } from "angular2-logger/core";
 export class NotificationsComponents {
     private _notes: Notification[];
 
-    constructor(private _notifications: NotificationService, private router: Router, private _logger: Logger) {
-        this._logger.log("create NotificationsComponents");
+    constructor(private _notifications: NotificationService, private router: Router, private _logger: NGXLogger) {
+        this._logger.debug("create NotificationsComponents");
         this._notes = new Array<Notification>();
 
         _notifications.noteAdded.subscribe(note => {

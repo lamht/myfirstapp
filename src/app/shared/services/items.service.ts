@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Predicate } from '../interfaces';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger'; 
  
 import * as _ from 'lodash';
  
 @Injectable()
 export class ItemsService {
  
-    constructor(private _logger: Logger) { 
-        this._logger.log("create ItemsService");
+    constructor(private _logger: NGXLogger) { 
+        this._logger.debug("create ItemsService");
     }
  
     /*

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger'; 
 
 @Component({
   //selector: 'app-home',
@@ -8,8 +8,8 @@ import { Logger } from "angular2-logger/core";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _logger: Logger) { 
-    this._logger.log("create HomeComponent");
+  constructor(private _logger: NGXLogger) { 
+    this._logger.debug("create HomeComponent");
   }
 
   ngOnInit() {

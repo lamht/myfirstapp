@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +7,8 @@ import { Logger } from "angular2-logger/core";
 })
 export class SimpleLayoutComponent implements OnInit {
 
-  constructor(private _logger: Logger) { 
-    this._logger.log("create SimpleLayoutComponent");
+  constructor(private _logger: NGXLogger) { 
+    this._logger.debug("create SimpleLayoutComponent");
   }
 
   ngOnInit(): void { }

@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {HomeComponent} from './home.component';
 import {HomeRoutingModule} from './home-routing.module';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @NgModule({
     imports: [
@@ -21,7 +21,7 @@ import { Logger } from "angular2-logger/core";
     })
 
 export class HomeModule {
-    constructor(private _logger: Logger){
-        this._logger.log("create HomeModule");
+    constructor(private _logger: NGXLogger){
+        this._logger.debug("create HomeModule");
     }
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable, Observer } from 'rxjs';
 import { ItemsService }     from '../shared/services/items.service';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 import { map, catchError } from 'rxjs/operators';
 
@@ -20,8 +20,8 @@ export class MaterialService {
     private curentIndex : number = 1;
     private itemService: ItemsService;
    
-   constructor(private itemS: ItemsService, private _logger: Logger) {
-       this._logger.log("create MaterialService");
+   constructor(private itemS: ItemsService, private _logger: NGXLogger) {
+       this._logger.debug("create MaterialService");
        this.materials = new Array<Material>();
        this.itemService = itemS;
    }

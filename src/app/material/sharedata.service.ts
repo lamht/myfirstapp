@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 //import {Material} from './models/material.model'
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 
 export class Notifiy {
@@ -10,8 +10,8 @@ export class Notifiy {
 
 @Injectable()
 export class ShareDataService {
-    constructor(private _logger: Logger){
-        this._logger.log("create ShareDataService");
+    constructor(private _logger: NGXLogger){
+        this._logger.debug("create ShareDataService");
     }
     public dataPassed : Notifiy = null;
 

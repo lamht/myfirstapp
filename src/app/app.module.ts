@@ -30,7 +30,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
- import { Logger, Level} from "angular2-logger/core"; 
+import { LoggerModule, NgxLoggerLevel, NGXLogger  } from 'ngx-logger';
 
 // Must export the config
 export const firebaseConfig = {
@@ -48,6 +48,7 @@ export const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     //DropdownModule.forRoot(),
+    LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
     TabsModule.forRoot(),
     ChartsModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -72,14 +73,12 @@ export const firebaseConfig = {
     Http,
     ItemsService,
     NotificationService ,
-    BasicValidators,
-    Logger 
+    BasicValidators
   ],
   bootstrap: [ AppComponent, NotificationsComponents ]
 })
 export class AppModule { 
-  constructor(private _logger: Logger){
-    this._logger.level = Level.LOG;
+  constructor(private _logger: NGXLogger){
     this._logger.log("create AppModule");
   }
 }

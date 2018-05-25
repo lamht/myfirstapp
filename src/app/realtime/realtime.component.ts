@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireList} from 'angularfire2/database';
 import {RealTimeService} from './realtime.service';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Component({
   //selector: 'app-realtime',
@@ -11,7 +11,7 @@ import { Logger } from "angular2-logger/core";
 export class RealTimeComponent implements OnInit {
 
   private val : number = 10;
-  constructor(private realTimeService: RealTimeService, private _logger: Logger) {
+  constructor(private realTimeService: RealTimeService, private _logger: NGXLogger) {
     this._logger.debug("create RealTimeComponent");
     realTimeService.realTimeVal.valueChanges().subscribe(data =>{
       if(data != null && data.value != null){

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ShareDataService} from './sharedata.service';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger'; 
 
 @Component({
     template: `
@@ -11,8 +11,8 @@ import { Logger } from "angular2-logger/core";
 
 export class MaterialComponent {
     title = "Material";
-    constructor(private _logger: Logger){
-        this._logger.log("create MaterialComponent");
+    constructor(private _logger: NGXLogger){
+        this._logger.debug("create MaterialComponent");
         
     }
 }

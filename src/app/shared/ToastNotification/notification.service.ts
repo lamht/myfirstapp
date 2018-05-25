@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core'
 import {Subject } from 'rxjs';
 
 import {Notification} from './notification';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Injectable()
 export class NotificationService {
     private _Notifications = new Subject<Notification>();
-    constructor(private _logger: Logger){   
-        this._logger.log("create NotificationService");
+    constructor(private _logger: NGXLogger){   
+        this._logger.debug("create NotificationService");
     }
 
     public noteAdded = this._Notifications.asObservable();

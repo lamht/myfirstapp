@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Injectable()
 export class RealTimeService {
    public realTimeVal : AngularFireObject<RealTimeData>;
-   constructor(db: AngularFireDatabase, afAuth: AngularFireAuth, private _logger: Logger) {
-       this._logger.log("create RealTimeService");
+   constructor(db: AngularFireDatabase, afAuth: AngularFireAuth, private _logger: NGXLogger) {
+       this._logger.debug("create RealTimeService");
        this.realTimeVal = db.object('realtime');
        afAuth.authState;
        //this.update(10);

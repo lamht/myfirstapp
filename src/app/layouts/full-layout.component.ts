@@ -8,7 +8,7 @@ import {
     NavigationCancel,
     NavigationError
 } from '@angular/router';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,8 +32,8 @@ export class FullLayoutComponent implements OnInit {
     this.status.isopen = !this.status.isopen;
   }
 
-  constructor(private router: Router, private _logger: Logger) {
-      this._logger.log("Init full layout");
+  constructor(private router: Router, private _logger: NGXLogger) {
+      this._logger.debug("Init full layout");
       router.events.subscribe((event: RouterEvent) => {
             this.navigationInterceptor(event);
       });

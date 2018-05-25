@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
-import { Logger } from "angular2-logger/core";
+import { NGXLogger  } from 'ngx-logger';
 
 export const routes: Routes = [
   {
@@ -75,7 +75,7 @@ export const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
-  constructor(private _logger: Logger){
-    this._logger.log("craete AppRoutingModule");
+  constructor(private _logger: NGXLogger){
+    this._logger.debug("craete AppRoutingModule");
   }
 }

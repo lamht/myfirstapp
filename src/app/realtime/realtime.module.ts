@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {RealTimeComponent} from './realtime.component';
 import {RealTimeRoutingModule} from './realtime-routing.module';
 import {RealTimeService} from './realtime.service';
-import { Logger } from "angular2-logger/core"; 
+import { NGXLogger  } from 'ngx-logger';
 
 @NgModule({
     imports: [
@@ -23,7 +23,7 @@ import { Logger } from "angular2-logger/core";
     })
 
 export class RealTimeModule {
-    constructor(private _logger: Logger){
-        this._logger.log("create RealTimeModule");
+    constructor(private _logger: NGXLogger){
+        this._logger.debug("create RealTimeModule");
     }
 }
