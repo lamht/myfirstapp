@@ -13,7 +13,7 @@ import { NGXLogger  } from 'ngx-logger';
 })
 
 export class NotificationsComponents {
-    private _notes: Notification[];
+    public _notes: Notification[];
 
     constructor(private _notifications: NotificationService, private router: Router, private _logger: NGXLogger) {
         this._logger.debug("create NotificationsComponents");

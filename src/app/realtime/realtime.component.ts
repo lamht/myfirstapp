@@ -10,7 +10,7 @@ import { NGXLogger  } from 'ngx-logger';
 })
 export class RealTimeComponent implements OnInit {
 
-  private val : number = 10;
+  public val : number = 10;
   constructor(private realTimeService: RealTimeService, private _logger: NGXLogger) {
     this._logger.debug("create RealTimeComponent");
     realTimeService.realTimeVal.valueChanges().subscribe(data =>{
@@ -24,11 +24,11 @@ export class RealTimeComponent implements OnInit {
   ngOnInit() {
   }
 
-  private decrease(){
+  public decrease(){
     this.val--;
     this.realTimeService.update(this.val);
   }
-  private increase(){
+  public increase(){
     this.val++;
     this.realTimeService.update(this.val);
   }
