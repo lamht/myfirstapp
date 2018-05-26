@@ -13,7 +13,7 @@ import globalMessage = require('../shared/global/global.messages')
 import {NotificationService} from '../shared/ToastNotification/notification.service'
 import { Notification } from '../shared/ToastNotification/notification';
 import { ItemsService }     from '../shared/services/items.service';
-
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
     templateUrl: './material-list.component.html',
@@ -29,7 +29,7 @@ export class MaterialListComponent implements OnInit, OnDestroy {
     constructor(private _service: MaterialService,
         private _notify: NotificationService
         , private _sharedService: ShareDataService,
-        private _router: Router,) {
+        private _router: Router, private _logger: NGXLogger) {
     }
        
     objDeleteMaterial = new Material(); ///Object that is used for delete material
@@ -50,7 +50,10 @@ export class MaterialListComponent implements OnInit, OnDestroy {
 
     bindGrid() { //// Bind material Grid
         this._service.getMaterials()
-            .subscribe(materials => this.materials = materials)
+            .subscribe(materials => {
+                this.materials = materials;               
+                this._logger.debug(materials);
+            });
     }
 
     confirmDelete() {
@@ -58,9 +61,9 @@ export class MaterialListComponent implements OnInit, OnDestroy {
         this.deleteMaterial(this.objDeleteMaterial);
     }
 
-    deleteMaterial(material) {
+    deleteMaterial(material: Material) {        
         var flag = 0;
-        this._service.insertUpdateMaterial(material, true)
+        this._service.deleteItem(material.Id.toString())
             .subscribe(data => {
                 if (data == 1) {//// Procedure returns one if record deleted
                     this._notify.add(new Notification(globalMessage.MessageType.Success, globalMessage.Messages.Deleted));

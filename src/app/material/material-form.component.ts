@@ -22,7 +22,7 @@ export class MaterialFormComponent implements OnInit {
     public materialForm: FormGroup;
     public submitted: boolean;
     public events: any[] = [];
-    public id: Number;
+    public id: number;
     public title: string;
 
     material = new Material(); //// Material model used for add/edit/delete
@@ -36,12 +36,10 @@ export class MaterialFormComponent implements OnInit {
         private _sharedService: ShareDataService
     ) {
         this.materialForm = this.fb.group({ //// Make Model driven form
-            MaterialId: [],
+            Id: [],
             Name: ['', [<any>Validators.minLength(5), BasicValidators.required]],
             Code: ['', Validators.required],
             Description: [],
-            Image: [],
-            Barcode: [],
 
         })
     }
@@ -62,7 +60,7 @@ export class MaterialFormComponent implements OnInit {
         if (!this.id) {
             return;
         }
-        this._service.getMaterial(this.id) //// If id is passed get material for edit.
+        this._service.getMaterial(this.id.toString()) //// If id is passed get material for edit.
             .subscribe(material => {
                 this.material = material
                 // this.MapFormToModel(this.materialForm.controls, material);
@@ -92,13 +90,13 @@ export class MaterialFormComponent implements OnInit {
 
     save(model: Material, isValid: boolean) {
         var result;
-        this._service.insertUpdateMaterial(model)
+        this._service.save(model)
             .subscribe(data => {
                 if (data == 1) {
                     this._sharedService.SetData(globalMessage.MessageType.Success, globalMessage.Messages.Success);
                     this.router.navigate(["materials"]);
                 }
-                else if (data == 2) {
+                else if (data == 0) {
                     this._notify.add(new Notification(globalMessage.MessageType.Error, globalMessage.Messages.Exists));
                     
                 }

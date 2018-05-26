@@ -1,133 +1,128 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Injectable, OnInit } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable, Observer } from 'rxjs';
-import { ItemsService }     from '../shared/services/items.service';
-import { NGXLogger  } from 'ngx-logger';
+import { ItemsService } from '../shared/services/items.service';
+import { NGXLogger } from 'ngx-logger';
 
-import { map, catchError } from 'rxjs/operators';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {map, catchError } from 'rxjs/operators';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
-import {Material} from './models/material.model'
+import { Material } from './models/material.model';
 
 //import globalVariables = require('../shared/global/global.variables')
 //https://github.com/angular/angularfire2/blob/master/docs/rtdb/lists.md
 @Injectable()
-export class MaterialService {
+export class MaterialService implements OnInit {
 
-   // private apiUrl = globalVariables.apiUrl + "MaterialsAPI/";
-    //private webUrl = globalVariables.webUrl + "Materials/";
-    private materials : Array<Material>;
-    private curentIndex : number = 1;
+    private basePath: string = '/materials';
+    private indexPath: string = '/indexes/material';
+    private materials;
+    private curentIndex: number = 1;
     private itemService: ItemsService;
-    private materialFB: AngularFireList<any>;
-   
-   constructor(private itemS: ItemsService, private db: AngularFireDatabase, private _logger: NGXLogger) {
-       this._logger.debug("create MaterialService");
-       this.materials = new Array<Material>();
-       this.itemService = itemS;
-       this.materialFB = db.list("material");
-   }
-   /*
-    constructor(private _http: Http) {
-        //this.materials = new Array<Material>();
-        //this.itemService = itemS;
-    }
-    */
-    
-    
-    getMaterial(materialId){
-        if(materialId > 0){
-            var item =  this.itemService.getItem<Material>(this.materials, (m) => m.MaterialId == materialId);
-            return new Observable<Material>(observer => {
-                observer.next(item)
-            });
-        } else {
-            return new Observable<Material>(observer => {
-                observer.next(null)
-            }); 
-        }
+
+    constructor(private itemS: ItemsService, private db: AngularFireDatabase, private _logger: NGXLogger) {
+        this._logger.debug("create MaterialService");
+        this.itemService = itemS;
+        this.materials = db.list<Material>(this.basePath);
+        this.subscribeIndex();
     }
 
-  
+    ngOnInit(): void {
+
+    }
+
     getMaterials() {
-    
-            return new Observable<Array<Material>>(observer => {
-                observer.next(this.materials);                
-            });
+        return this.materials.valueChanges();
+    }
+
+
+    // Return a single observable item
+    getMaterial(key: string): Observable<Material> {
+        const itemPath = `${this.basePath}/${key}`;
+        return this.db.object<Material>(itemPath).valueChanges();
+    }
+
+    save(item: Material) {
         
-
-        /*
-        if (materialId > 0) {
-            return this._http.get(this.apiUrl + "GetMaterials?materialId=" + materialId)
-                .map(res => res.json()[0])
-            //             .map(this.extractData)
+        //new
+        if (item.Id == null) {
+            return this.createItem(item);
+        } else // update 
+        {
+            var key = item.Id.toString();
+            return this.updateItem(key, item);
         }
-        else {
-            return this._http.get(this.apiUrl + "GetMaterials")
-                .map(res => res.json())
-        }
-       */
-    } 
-    
-    private extractData(res: Response) {
-        let body = res.json();
-        return body[0];
     }
-    
-    
 
-    insertUpdateMaterial(material : Material, isDetele = false) {
-        //debugger
-        //var data;
-        //var materialModel = new Material();
-        if (isDetele) {
-            var id = material.MaterialId;
-            if(id != null && id > 0){
-                this.itemService.removeItems<Material>(this.materials, (m) => m.MaterialId == id);
-            }
-        } else {
-            var isNew = (material.MaterialId == null || material.MaterialId <= 0)
-            if(isNew){
-                material.MaterialId = this.curentIndex++;
-                this.materials.push(material);
-            } else {
-                this.itemService.setItem<Material>(this.materials, (m) => m.MaterialId == material.MaterialId, material);
-            }
-            
-        }
-
-        return new Observable(observer => {
-                observer.next(1)
+    createItem(item: Material) {        
+        item.Id = this.getIndex();//this.curentIndex++;
+        var key = item.Id.toString();
+        const itemPath = `${this.basePath}/${key}`;
+        this.db.object<Material>(itemPath).set(item)
+            .catch(error => {
+                this.handleError(error);
+                return this.success(0);
             });
-        /*
-        var error;
-        let body = JSON.stringify(material);
-        let headers = new Headers({ 'Content-Type': 'application/json', async: false });
-        let options = new RequestOptions({ headers: headers });
-        return this._http.post(this.apiUrl + "InsertUpdateMaterial/", body, options)
-            .map(res => {
-                // If request fails, throw an Error that will be caught
-                if (res.status < 200 || res.status >= 300) {
-                    throw new Error('This request has failed ' + res.status);
-                }
-                // If everything went fine, return the response
-                else {
-                    return res.json();
-                }
-            })
-        // .subscribe(
-        // (data) => this.data = data, // Reach here if res.status >= 200 && <= 299
-        // (err) => this.error = err);
-        // .catch(this.handleError);       
-        */
-    }
-     
-    
-    private handleError(error: Response) {
-        console.error(error);
+        return this.success(1);
     }
 
-    
+
+    // Update an existing item
+    updateItem(key: string, item: Material) {
+        this.materials.update(key, item)
+            .catch(error => {
+                this.handleError(error);
+                return this.success(0);
+            });
+        return this.success(1);
+    }
+
+    // Deletes a single item
+    deleteItem(key: string) {
+        this.materials.remove(key)
+            .catch(error => {
+                this.handleError(error);
+                return this.success(0);
+            });
+        return this.success(1);
+    }
+
+    // Deletes the entire list of items
+    deleteAll() {
+        this.materials.remove()
+            .catch(error => {
+                this.handleError(error);
+                return this.success(0);
+            });
+        return this.success(1);
+    }
+
+    private subscribeIndex(): void {
+        var ref = this.db.object<number>(this.indexPath);
+        ref.valueChanges()
+            .subscribe(v => {
+                if (v == null) {
+                    v = 1;
+                }
+                this.curentIndex = v;
+                this._logger.debug("get material index " + this.curentIndex);
+            });
+    }
+
+    private getIndex(): number{
+        this.curentIndex++;
+        this.db.object<number>(this.indexPath).set(this.curentIndex);
+        return this.curentIndex;
+    }
+
+    private success(s: number) {
+        return new Observable(observer => {
+            observer.next(s);
+        });
+    }
+    private handleError(error: Response) {
+        this._logger.error(error);
+    }
 }
 
 

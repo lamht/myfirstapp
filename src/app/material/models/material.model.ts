@@ -1,5 +1,5 @@
 export class Material {
-    MaterialId: number;
+    Id: Number;
     Name: string;
     Code: string;
     Description: string

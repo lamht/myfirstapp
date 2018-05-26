@@ -1,19 +1,19 @@
 
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="card col-sm-12">
-        <div class="card-block">
-                
-                    <div class="offset-md-3 col-md-6 well">
-                        <h2 class="card-title mb-0"> {{title}} </h2>
+    <div class="row">
+        <div class="card col-sm-12">
+            <div class="card-block">
+
+                <div class="offset-md-3 col-md-6 well">
+                    <h2 class="card-title mb-0"> {{title}} </h2>
                     <form [formGroup]="materialForm" novalidate (ngSubmit)="save(materialForm.value,materialForm.valid)">
                         <div class="form-group">
                             <!--<input type="hidden" formControlName="MaterialId">-->
                             <label>Name</label>
                             <input type="text" formControlName="Name" class="form-control">
                             <div *ngIf="materialForm.get('Name').hasError('required') && materialForm.controls.Name.touched" class="alert alert-danger">
-                            <!--{{materialForm.controls.Name.validator('required').message}}-->
-                            Name is required.
+                                <!--{{materialForm.controls.Name.validator('required').message}}-->
+                                Name is required.
                             </div>
                             <div class="alert alert-danger" *ngIf="!materialForm.controls.Name.valid && materialForm.get('Name').hasError('minlength') && materialForm.get('Name').touched">
                                 Minimum of 5 characters required.
@@ -21,30 +21,28 @@
                         </div>
                         <div class="form-group">
                             <label> Code</label>
-                            <input type="text" class="form-control" formControlName='Code'> 
+                            <input type="text" class="form-control" formControlName='Code'>
                             <div class="alert alert-danger" *ngIf="(materialForm.controls.Code.value==null || !materialForm.controls['Code'].valid ) && materialForm.controls.Code.touched">
                                 Code is required.
                             </div>
-
                         </div>
-
-
-
                         <div class="form-group">
                             <label> Description</label>
                             <textarea cols="30" rows="5" class="form-control" formControlName='Description'></textarea>
                         </div>
                         <button [disabled]="!materialForm.valid" type="submit" class="btn btn-primary">
-                        Save
-                    </button>
+                            Save
+                        </button>
+                        &nbsp;
                         <button [routerLink]="[('/materials')]" class="btn btn-danger">
-                        Cancel
-                    </button>
+                            Cancel
+                        </button>
                     </form>
                 </div>
-         
-         
-         </div> <!-- end card block-->
+
+
+            </div>
+            <!-- end card block-->
         </div>
     </div>
 </div>
