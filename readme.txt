@@ -8,3 +8,6 @@ ng build --prod --build-optimizer
 ng serve
 #Deploy firebase
 firebase deploy
+
+#update packages
+npm i -g npm-check-updates

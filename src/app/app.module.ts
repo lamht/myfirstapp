@@ -50,7 +50,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     //DropdownModule.forRoot(),
     LoggerModule.forRoot({serverLoggingUrl: 'http://logs-01.loggly.com/bulk/318bbe7a-08b6-46c4-8d40-2a06af368dee/tag/bulk/',
-                          level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
+                          level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.DEBUG}),
     TabsModule.forRoot(),
     ChartsModule,
     AngularFireModule.initializeApp(firebaseConfig),
