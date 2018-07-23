@@ -41,11 +41,23 @@
 
 -->
 <style>
-.loading {
-    z-index: 999;
-    width: 100%;
-    position: fixed;
-    margin-top: 10%;
+.pre-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /*background: rgba(0, 0, 0, 0.3);*/
+    z-index: 999999;
+    
+}
+.fixed {
+        position: fixed;
+}
+.pre-loading i{
+    position: absolute;
+    left:50%;
+    top:30%;
 }
 </style>
 
@@ -57,7 +69,9 @@
   
   <!-- App Loading... -->
   <app>
-    <i class="loading  blue fa fa-spinner fa-spin fa-4x fa-fw margin-bottom" ></i>
+      <div class="pre-loading  fixed">
+          <i class="blue fa fa-spinner fa-spin fa-4x fa-fw" ></i>
+      </div>
   </app>
 </body>
 

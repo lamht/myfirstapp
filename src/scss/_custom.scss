@@ -5,3 +5,21 @@ tr:last-child td {
 .table-box-shadow{
     box-shadow: 1px 1px 1px #888888;
 }
+
+.pre-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    //background: rgba(0, 0, 0, 0.3);
+    z-index: 999999;
+    &.fixed {
+        position: fixed;
+    }
+}
+.pre-loading i{
+    position: absolute;
+    left:50%;
+    top:30%;
+}
