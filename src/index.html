@@ -41,6 +41,18 @@
 
 -->
 <style>
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes backgroundcolor {
+    0%   {background: rgba(5, 5, 5, 0);}
+    100% {background:rgba(5, 5, 5, 0.11)}
+}
+
+/* Standard syntax */
+@keyframes backgroundcolor {
+    0%   {background: rgba(5, 5, 5, 0);}
+    100% {background:rgba(5, 5, 5, 0.15)}
+}
+
 .pre-loading {
     position: absolute;
     top: 0;
@@ -49,6 +61,8 @@
     right: 0;
     /*background: rgba(0, 0, 0, 0.3);*/
     z-index: 999999;
+    -webkit-animation: backgroundcolor 2s forwards; /* Safari 4.0 - 8.0 */
+    animation: backgroundcolor 2s forwards; 
     
 }
 .fixed {
