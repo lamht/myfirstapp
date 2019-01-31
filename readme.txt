@@ -1,3 +1,13 @@
+#Install yarn management
+ng config -g cli.packageManager yarn
+# Start project with yarn
+yarn start
+# Restore project
+yarn install
+# Build project
+yarn build --prod
+
+
 # Restore project 
 npm install
 # Build project
@@ -11,6 +21,7 @@ firebase deploy
 
 #update packages
 npm i -g npm-check-updates
+
 
 # angluar version
 ng -v
