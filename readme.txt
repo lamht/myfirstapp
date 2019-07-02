@@ -29,4 +29,4 @@ ng update @angular/material
 
 #install typescript version
 npm install typescript@2.10.0
-
+yarn add typescript@3.1.1
