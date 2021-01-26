@@ -1,5 +1,6 @@
 # Restore project 
 npm install
+npm --registry http://nexus.datrijx.test.infodation.vn/repository/npmjs-registry/ install
 # Build project
 ng build
 #Build product
