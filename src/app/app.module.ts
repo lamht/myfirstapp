@@ -1,61 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Component } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { DropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { NAV_DROPDOWN_DIRECTIVES } from './shared/directives/nav-dropdown.directive';
-
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/directives/sidebar.directive';
-import { AsideToggleDirective } from './shared/directives/aside.directive';
-import { BreadcrumbsComponent } from './shared/breadcrumb.component';
-
-// Routing Module
-import { AppRoutingModule } from './app.routing';
-
-// Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
-
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
-//services
-import { ItemsService }     from './shared/services/items.service';
-import {NotificationService} from './shared/ToastNotification/notification.service';
-import {BasicValidators} from './shared/CustomValidators/basicValidators';
+import { NAV_DROPDOWN_DIRECTIVES } from './shared/directives/nav-dropdown.directive';
+import { BreadcrumbsComponent } from './shared/breadcrumb.component';
+import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/directives/sidebar.directive';
+import { AsideToggleDirective } from './shared/directives/aside.directive';
 import { NotificationsComponents } from './shared/ToastNotification/notification.component';
-
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-
-import { LoggerModule, NgxLoggerLevel, NGXLogger  } from 'ngx-logger';
-
-// Must export the config
-export const firebaseConfig = {
-    apiKey: "AIzaSyCVtKULsKmh_SPtYPKFfwdp_DEnPlMbsCA",
-    authDomain: "myfristapp-d48c0.firebaseapp.com",
-    databaseURL: "https://myfristapp-d48c0.firebaseio.com",
-    projectId: "myfristapp-d48c0",
-    storageBucket: "myfristapp-d48c0.appspot.com",
-    messagingSenderId: "151644597395"
-};
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BasicValidators } from './shared/CustomValidators/basicValidators';
+import { NotificationService } from './shared/ToastNotification/notification.service';
+import { ItemsService } from './shared/services/items.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //DropdownModule.forRoot(),
-    LoggerModule.forRoot({serverLoggingUrl: 'http://logs-01.loggly.com/bulk/318bbe7a-08b6-46c4-8d40-2a06af368dee/tag/bulk/',
-                          level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.DEBUG}),
-    TabsModule.forRoot(),
-    ChartsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    BrowserAnimationsModule,
+    MatTabsModule,
+    LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR}),
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    MatDialogModule,
   ],
   declarations: [
     AppComponent,
@@ -66,21 +45,17 @@ export const firebaseConfig = {
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     NotificationsComponents,
-    
+    ConfirmDialogComponent,
   ],
+  entryComponents: [ConfirmDialogComponent],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,  
   }, 
-    Http,
     ItemsService,
     NotificationService ,
     BasicValidators
   ],
-  bootstrap: [ AppComponent, NotificationsComponents ]
+  bootstrap: [AppComponent, NotificationsComponents ]
 })
-export class AppModule { 
-  constructor(private _logger: NGXLogger){
-    this._logger.log("create AppModule");
-  }
-}
+export class AppModule { }

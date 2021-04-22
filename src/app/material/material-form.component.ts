@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {ActivatedRoute, Router, CanDeactivate } from '@angular/router'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router } from '@angular/router'
 
 import {MaterialService} from './material.service'
 import {Material} from './models/material.model'
@@ -10,8 +10,8 @@ import {ShareDataService} from './sharedata.service';
 import {NotificationService} from '../shared/ToastNotification/notification.service'
 import { Notification } from '../shared/ToastNotification/notification';
 import {BasicValidators} from '../shared/CustomValidators/basicValidators'
+import { Messages, MessageType } from '../shared/global/global.messages';
 
-import globalMessage = require('../shared/global/global.messages')
 
 @Component({
     templateUrl: './material-form.component.html',
@@ -93,15 +93,15 @@ export class MaterialFormComponent implements OnInit {
         this._service.save(model)
             .subscribe(data => {
                 if (data == 1) {
-                    this._sharedService.SetData(globalMessage.MessageType.Success, globalMessage.Messages.Success);
+                    this._sharedService.SetData(MessageType.Success, Messages.Success);
                     this.router.navigate(["materials"]);
                 }
                 else if (data == 0) {
-                    this._notify.add(new Notification(globalMessage.MessageType.Error, globalMessage.Messages.Exists));
+                    this._notify.add(new Notification(MessageType.Error, Messages.Exists));
                     
                 }
                 else {
-                    this._sharedService.SetData(globalMessage.MessageType.Error, globalMessage.Messages.Exists);
+                    this._sharedService.SetData(MessageType.Error, Messages.Exists);
                     
                 }
             }

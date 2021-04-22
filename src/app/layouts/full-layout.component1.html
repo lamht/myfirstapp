@@ -2,7 +2,7 @@
     <i class="blue fa fa-spinner fa-spin fa-4x fa-fw" ></i>
 </div>
 <header class="app-header navbar">
-  <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
+  <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up d-md-none" type="button">&#9776;</button>
   <a class="navbar-brand" href="#"></a>
   
   <ul class="nav navbar-nav hidden-md-down">
@@ -74,7 +74,18 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/realtime']"><i class="icon-puzzle"></i> Real Time</a>
             </li>
-            
+            <!-- Icon -->
+            <li class="nav-item nav-dropdown" routerLinkActive="open">
+              <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Icons</a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/icons/font-awesome']"><i class="icon-star"></i> Font Awesome</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/icons/simple-line-icons']"><i class="icon-star"></i> Simple Line Icons</a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </li>
         
@@ -106,10 +117,10 @@
     </div><!-- /.conainer-fluid -->
   </main>
 
-  <aside class="aside-menu">
-    <tabset>
-      <tab>
-        <ng-template tabHeading><i class="icon-list"></i></ng-template>
+  <aside class="aside-menu aside-menu-tab">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label ><i class="icon-list"></i></ng-template>
         <div class="callout m-0 py-h text-muted text-center bg-faded text-uppercase">
           <small><b>Today</b></small>
         </div>
@@ -194,9 +205,9 @@
           </div>
         </div>
         <hr class="mx-1 my-0">
-      </tab>
-      <tab>
-        <ng-template tabHeading><i class="icon-speech"></i></ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label ><i class="icon-speech"></i></ng-template>
         <div class="p-1">
           <div class="message">
             <div class="py-1 pb-3 mr-1 float-left">
@@ -273,9 +284,9 @@
             <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
           </div>
         </div>
-      </tab>
-      <tab>
-        <ng-template tabHeading><i class="icon-settings"></i></ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label><i class="icon-settings"></i></ng-template>
         <div class="p-1">
           <h6>Settings</h6>
 
@@ -356,8 +367,8 @@
           </div>
           <small class="text-muted">25GB/256GB</small>
         </div>
-      </tab>
-    </tabset>
+      </mat-tab>
+    </mat-tab-group>
   </aside>
 </div>
 

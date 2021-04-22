@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireList} from 'angularfire2/database';
 import {RealTimeService} from './realtime.service';
 import { NGXLogger  } from 'ngx-logger';
 

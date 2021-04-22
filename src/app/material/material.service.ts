@@ -1,11 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable, Observer } from 'rxjs';
 import { ItemsService } from '../shared/services/items.service';
 import { NGXLogger } from 'ngx-logger';
 
 import {map, catchError } from 'rxjs/operators';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 import { Material } from './models/material.model';
 

@@ -8,11 +8,9 @@ import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 
 // Modal Component
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalsComponent } from './modals.component';
 
 // Tabs Component
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TabsComponent } from './tabs.component';
 
 // Components Routing

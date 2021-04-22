@@ -22,7 +22,7 @@ export class NotificationsComponents {
         _notifications.noteAdded.subscribe(note => {
             this._notes.push(note);
 
-            setTimeout(() => { this.hide.bind(this)(note) }, 7000);
+            setTimeout(() => { this.hide.bind(this)(note) }, 5000);
         });
 
         router.events.subscribe((val) => {

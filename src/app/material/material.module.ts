@@ -14,7 +14,6 @@ import {ModalPopupComponent  } from '../usable-component/modal-popup/modalpopup.
 import {MaterialService} from './material.service'
 import {ShareDataService} from './sharedata.service';
 
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { NGXLogger  } from 'ngx-logger';
 
 
@@ -24,7 +23,6 @@ import { NGXLogger  } from 'ngx-logger';
         MaterialRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        ModalModule.forRoot(),
     ],
     declarations: [
         MaterialComponent,

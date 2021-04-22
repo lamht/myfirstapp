@@ -45,6 +45,11 @@ app-root {
     // $aside-menu-width is the width of the columns
     flex: 0 0 $aside-menu-width;
   }
+
+  .aside-menu-tab .mat-tab-label{
+    // $aside-menu-tab-width is the width of the columns
+    min-width: $aside-menu-tab-width !important;
+  }
 }
 
 //
